@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07 V-Model</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <div id="app">
+        <h2>Product List</h2>
+        <ul>
+            <li v-for="product in products"> {{product}} </li>
+        </ul>
+        <br>
+
+        <h2>Persons List</h2>
+        <ul>
+            <li v-for="person in persons"> {{person.name}} {{person.age}} 
+                <span v-if="person.age < 18">Teenage</span>
+                <span v-if="person.age >= 18">Adult</span>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                products:['coffee','Tea','Cola','Milk'],
+                persons:[
+                    {name:"Samit", age:"43", status:false},
+                    {name:"Prayut", age:"53", status:true},
+                    {name:"Anan", age:"13", status:false}
+                ]
+
+            },
+            methods: {
+                Login:function(){
+                    this.status = true;
+                },
+                LogOut:function(){
+                    this.status = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

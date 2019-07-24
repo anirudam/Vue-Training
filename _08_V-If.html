@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07 V-Model</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <div id="app">
+        <button @click="Login">Login</button>
+        <h4 v-if="status">{{message}}</h4>
+        <button @click="LogOut">LogOut</button>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello! Your are guest",
+                status: false,
+            },
+            methods: {
+                Login:function(){
+                    this.status = true;
+                },
+                LogOut:function(){
+                    this.status = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

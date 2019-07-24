@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13 Multiple View</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <div id="post">
+        Post num : {{num}}
+        <button @click="num++">Add Num</button>
+    </div>
+
+    <div id="comment">
+        comment num : {{num}}
+        <button @click="num++">Add Num</button>
+    </div>
+
+    <div id="like">
+        like num : {{num}}
+        <button @click="num++">Add Num</button>
+    </div>
+
+    <script>
+        let post = new Vue({
+            el: "#post",
+            data: {
+                num: 0
+            }
+        })
+
+        let comment = new Vue({
+            el: "#comment",
+            data: {
+                num: 0
+            }
+        })
+
+        let like = new Vue({
+            el: "#like",
+            data: {
+                num: 0
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

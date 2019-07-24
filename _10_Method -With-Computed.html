@@ -1,0 +1,93 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10 Method with Computed</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <div id="app">
+
+        <label for="">Employee Name</label>
+        <input type="text" ref="inputEmp" v-model="newEmp.empName"> <br><br>
+        <label for="">Salary</label>
+        <input type="text" v-model="newEmp.empSalary"> <br><br>
+
+        <button @click="addEmp">Add New Employee</button>
+
+        <h2>Employee List</h2>
+
+        <!-- <table>
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(row, rindex) in employees">
+                    <td>{{ rindex }}</td>
+                    <template>
+                        <cell v-for="(value, vindex) in row" :value="value" :vindex="vindex" :rindex="rindex"></cell>
+                    </template>
+                </tr>
+            </tbody>
+        </table>
+        <template id="template-cell">
+            <td>{{ value }}</td>
+        </template> -->
+
+
+        <ul>
+            <li v-for="employee in employees"> {{employee.empName}} {{employee.empSalary}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                newEmp: {
+                    empName: '',
+                    empSalary: ''
+                },
+                employees: [
+                    {
+                        empName: 'Smit Gooma',
+                        empSalary: 80000
+                    },
+                    {
+                        empName: 'Fernaf Mahfo',
+                        empSalary: 95000
+                    }
+                ]
+
+            },
+            methods: {
+                addEmp: function () {
+                    this.employees.push({
+                        empName: this.newEmp.empName,
+                        empSalary: this.newEmp.empSalary 
+                    })
+
+                    //Clear form
+                    this.newEmp.empName = ''
+                    this.newEmp.empSalary = 0
+
+                    //Focus input empName
+                    this.$refs.inputEmp.focus()
+                },
+
+            }
+        })
+    </script>
+</body>
+
+</html>

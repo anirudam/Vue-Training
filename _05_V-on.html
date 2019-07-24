@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05 V-on</title>
+</head>
+
+<body>
+    <!-- Tick 
+        Website https://docs.emmet.io/cheat-sheet/
+        div#app>ul>li*3
+        set formate ==> alt + shift + f 
+        {{}} => is Interpolations
+    -->
+    <div id="app">
+        {{visitor}}<br>
+        <p>
+            <button v-on:click="addVisitor">Add</button>
+            <button @click="subVisitor">Subtract</button>
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                topic: 'How is it to learning Vue ?',
+                message: "Hello World",
+                location: 'Bangkok',
+                site: 'https://www.itgenius.co.th',
+                visitor: 150
+            },
+            methods: {
+                addVisitor:function(){
+                    this.visitor++
+                },
+                subVisitor:function(){
+                    this.visitor--
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06 V-on Keyboard</title>
+</head>
+
+<body>
+    <!-- Tick 
+        Website https://docs.emmet.io/cheat-sheet/
+        div#app>ul>li*3
+        set formate ==> alt + shift + f 
+        {{}} => is Interpolations
+    -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <div id="app">
+        <input type="text" id="txtVal" v-on:keyup.enter="addVisitor" :value="visitor"><br><br>
+        {{visitor}}<br>
+        <p>
+            <button v-on:click="addVisitor" >Add</button>
+            <button @click="subVisitor">Subtract</button>
+        </p>
+    </div>
+    
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                topic: 'How is it to learning Vue ?',
+                message: "Hello World",
+                location: 'Bangkok',
+                site: 'https://www.itgenius.co.th',
+                visitor: 150
+            },
+            methods: {
+                addVisitor: function () {
+                    this.visitor++
+                },
+                subVisitor: function () {
+                    this.visitor--
+                },
+                addVisitorKeyListener: function (evt) {
+                    if (evt.keyCode === 13) {
+                        this.visitor++
+                    }else if(evt.keyCode === 38){  //button up 
+                        this.visitor = Math.floor((Math.random()*1000000)+1)
+                        //document.querySelector("#txtVal").value = this.visitor
+                    }else if(evt.keyCode === 40){  //button down
+                        this.visitor--
+                    }
+                }
+            },
+            created:function(){
+                document.addEventListener('keydown',this.addVisitorKeyListener)
+            }
+
+        })
+    </script>
+</body>
+
+</html>

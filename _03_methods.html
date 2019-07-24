@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03 Method</title>
+</head>
+
+<body>
+
+    <div id="app">
+        Product name : {{product}} <br>
+        Price : {{price}} <br>
+        Discount : {{discount}} <br>
+        Total Price : {{totalPrice()}} <br>
+        New Product : {{changProduct("Jean")}} <br>
+        <img v-bind:src="picUrl" alt=""> <br>
+        <a :href = "linkProduct">More Detail</a>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                product: "Cloths",
+                price: "299",
+                discount: "30", //comment
+                picUrl : "https://images.uncyc.org/th/1/19/%E0%B8%8A%E0%B8%B4%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87.gif",
+                linkProduct : "https://www.forex-3d.com/member/profile.php"
+
+            },
+            methods: {
+                totalPrice: function () {
+                    return this.price - ((this.price * this.discount) / 100)
+                },
+                changProduct:function(name){
+                    return this.product = name;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
